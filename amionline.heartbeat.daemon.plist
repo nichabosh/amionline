@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>Label</key>
+        <string>amionline.heartbeat.daemon.plist</string>
+
+        <key>Program</key>
+        <string>/usr/local/bin/heartbeat</string>
+        <key>ProgramArguments</key>
+        <array></array>
+
+        <!-- kicks off heartbeat service once job has been successfully loaded.
+        for daemons: execution occurs @ boot time (see: /Library/LaunchDaemons)
+        for agents: execution occurs @ user login (see: /Library/LaunchAgents) -->
+        <key>RunAtLoad</key>
+        <true/>
+
+        <!-- specifies frequency with which job is ran (provided in seconds) -->
+        <key>StartInterval</key>
+        <integer>15</integer>
+    </dict>
+</plist>
