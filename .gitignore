@@ -1,0 +1,67 @@
+### GoLand ###
+
+# user-specific stuff
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+
+# sensitive or high-churn files
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+.idea/**/dbnavigator.xml
+
+# project config/generated files
+.idea/**/contentModel.xml
+.idea/**/gradle.xml
+.idea/**/libraries
+.idea/httpRequests
+.idea_modules/
+
+### macOS ###
+
+# general
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# potential volume root files
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# remote afp share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# icloud/icon/thumbnails
+*.icloud
+Icon
+._*
+
+### VisualStudioCode ###
+
+# general
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# history/extensions
+.history
+.ionide
+*.vsix
