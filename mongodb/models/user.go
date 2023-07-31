@@ -1,4 +1,4 @@
-package schemas
+package models
 
 import (
 	"fmt"
@@ -8,6 +8,9 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
+// User defines the document structure used to represent an end-user. The
+// uuid field acts as the document's unique identifier, whereas the remaining
+// fields persist personal information and other relevant/necessary metadata.
 type User struct {
 	uuid      primitive.ObjectID `bson:"_id,omitempty"`
 	createdAt primitive.DateTime `bson:"createdAt,omitempty"`
