@@ -1,9 +1,9 @@
 package models
 
 import (
-	"fmt"
 	"time"
 
+	. "github.com/nichabosh/amionline/utils"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"golang.org/x/crypto/bcrypt"
 )
@@ -31,7 +31,7 @@ func NewUser(fname, lname, uname, email, pass string) (*User, error) {
 	uuid := primitive.NewObjectID()
 	now := primitive.NewDateTimeFromTime(time.Now())
 	if err := hashAndSaltPassword(&pass); err != nil {
-		return nil, fmt.Errorf("cannot hash password: %w", err)
+		return nil, NewError(USER_SCOPE, PASSWORD_HASHING_ERROR, err)
 	}
 
 	return &User{

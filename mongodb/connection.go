@@ -2,8 +2,8 @@ package mongodb
 
 import (
 	"context"
-	"fmt"
 
+	. "github.com/nichabosh/amionline/utils"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
@@ -20,12 +20,11 @@ func EstablishDbConnection(uri string) error {
 	clientOptions := options.Client().ApplyURI(uri)
 	newClient, err := mongo.Connect(mongoContext, clientOptions)
 	if err != nil {
-		return fmt.Errorf("cannot create client: %w", err)
+		return NewError(MONGO_SCOPE, CREATE_CLIENT_ERROR, err)
 	} else if err = newClient.Ping(mongoContext, nil); err != nil {
-		return fmt.Errorf("cannot connect to mongodb: %w", err)
+		return NewError(MONGO_SCOPE, VERIFY_CONNECTION_ERROR, err)
 	}
-
-	fmt.Println("mongodb connection successfully established!")
+	LogSuccess(MONGO_SCOPE, CONNECT_DB_SUCCESS)
 	mongoClient = newClient
 	return nil
 }
@@ -34,7 +33,8 @@ func EstablishDbConnection(uri string) error {
 // shutting down monitoring goroutines as well as the idle connection pool.
 func CloseDbConnection() error {
 	if err := mongoClient.Disconnect(mongoContext); err != nil {
-		return fmt.Errorf("cannot disconnect from mongodb: %w", err)
+		return NewError(MONGO_SCOPE, DISCONNECT_DB_ERROR, err)
 	}
+	LogSuccess(MONGO_SCOPE, DISCONNECT_DB_SUCCESS)
 	return nil
 }
